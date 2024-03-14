@@ -5,6 +5,5 @@ terraform {
     bucket          = "fesmero-terraform-state"
     key             = "state/terraform.tfstate"
     profile         = "fesmero-terraform"
-    dynamodb_table  = "infra_tf_lockid"
   }
 }

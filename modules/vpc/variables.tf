@@ -1,7 +1,6 @@
 variable "cidr_block" {
   # The CIDR block for the VPC
   type = string
-  default = "10.0.0.0/16"
 }
 
 variable "num_availability_zones" {
@@ -14,4 +13,17 @@ variable "availability_zones" {
   # Optional list of specific availability zones to use
   # If not set, Terraform will choose default availability zones
   type = list(string)
+}
+
+
+variable "public_subnet_cidr" {
+  description         = "Public Subnet CIDR block"
+  type                = list(string)
+  default             = ["0", "1"]
+}
+
+variable "private_subnet_cidr" {
+  description         = "Private Subnet CIDR block"
+  type                = list(string)
+  default             = ["2", "3"]
 }
