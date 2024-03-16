@@ -1,9 +1,4 @@
 resource "aws_security_group" "bastion_security_group" {
-    # ingress:
-    #     internet -> bastion
-    # egress:
-    #     bastion -> backend, rds
-
     ingress {
         from_port       = var.port_number
         to_port         = var.port_number
@@ -26,12 +21,21 @@ resource "aws_security_group" "bastion_security_group" {
 
 }
 
-# resource "aws_security_group" "backend_security_group" {
-#     ingress:
-#         bastion -> backend
-#     egress:
-#         backend -> rds
-# }
+resource "aws_security_group" "backend_security_group" {
+    ingress {
+        from_port       = var.port_number
+        to_port         = var.port_number
+        protocol        = var.protocol_type
+        cidr_blocks     = var.cidr_source
+    }
+
+    egress {
+        from_port       = var.port_number
+        to_port         = var.port_number
+        protocol        = var.protocol_type
+        cidr_blocks     = var.cidr_source
+    }
+}
 
 # resource "aws_security_group" "frontend_security_group" {
 #     ingress:
