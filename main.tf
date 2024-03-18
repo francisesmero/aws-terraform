@@ -7,14 +7,14 @@ module "vpc" {
 
 module "aws_security_group" {
   source                      = "./modules/security-groups"
-  vpc_id                      = vpc.vpc_id
-  name                        = "vpc-security-group"
-  description                 = "Security Group configuration for the VPC"
-  port_number                 = ["22","3306", "443"]
-  protocol_type               = ["tcp"]
-  cidr_source                 = var.allow_internet_access ? ["0.0.0.0/0"] : [aws_vpc.main.cidr_block]
-
+  vpc_id                      = module.vpc.vpc_id 
 }
+
+
+  # port_number                 = ["22","3306", "443"]
+  # protocol_type               = ["tcp"]
+  # cidr_source                 = var.allow_internet_access ? ["0.0.0.0/0"] : [aws_vpc.main.cidr_block]
+
 
 # module "object-storage" {
 #   source = "./modules/object-storage"
