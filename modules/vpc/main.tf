@@ -3,10 +3,17 @@ resource "aws_vpc" "vpc" {
   enable_dns_support   = true
 
   tags = {
-    Name = "My VPC"
+    Name = "awsdemo-vpc"
   }
 }
 
+resource "aws_internet_gateway" "my_internet_gw" {
+  vpc_id              = aws_vpc.vpc.id
+
+  tags = {
+    Name              = "awsdemo-igw"
+  }
+}
 
 
 resource "aws_subnet" "public" {
@@ -16,7 +23,7 @@ resource "aws_subnet" "public" {
   availability_zone   = var.availability_zones[count.index]
 
   tags = {
-    Name = format("Public Subnet %d", count.index + 1)
+    Name = format("awsdemo-public-subnet-%d", count.index + 1)
   }
 }
 
@@ -27,6 +34,6 @@ resource "aws_subnet" "private" {
   availability_zone   = var.availability_zones[count.index]
 
   tags = {
-    Name = format("Private Subnet %d", count.index +1)
+    Name = format("awsdemo-private-subnet-%d", count.index +1)
   }
 }
