@@ -1,5 +1,13 @@
-variable "cidr_block" {
-  # The CIDR block for the VPC
+variable "region" {
+
+}
+
+variable "project_name" {
+
+}
+
+
+variable "vpc_cidr_block" {
   type = string
 }
 
