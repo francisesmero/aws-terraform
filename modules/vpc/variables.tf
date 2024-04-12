@@ -1,37 +1,23 @@
 variable "region" {
-
 }
 
 variable "project_name" {
-
 }
-
 
 variable "vpc_cidr_block" {
-  type = string
 }
 
-variable "num_availability_zones" {
-  # The number of availability zones to create subnets in
-  type = number
-  default = 2
+variable "public_subnet_az1_cidr_block"{
 }
 
-variable "availability_zones" {
-  # Optional list of specific availability zones to use
-  # If not set, Terraform will choose default availability zones
-  type = list(string)
+variable "public_subnet_az2_cidr_block"{
 }
 
-
-variable "public_subnet_cidr" {
-  description         = "Public Subnet CIDR block"
-  type                = list(string)
-  default             = ["0", "1"]
+variable "private_subnet_az1_cidr_block"{
 }
 
-variable "private_subnet_cidr" {
-  description         = "Private Subnet CIDR block"
-  type                = list(string)
-  default             = ["2", "3"]
+variable "private_subnet_az2_cidr_block"{
 }
+
+variable "availability_zones" { 
+} 
